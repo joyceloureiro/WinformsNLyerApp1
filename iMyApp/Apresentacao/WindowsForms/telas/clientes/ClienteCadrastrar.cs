@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Negocio.Comum;
+using Negocio.Entidades;
+using System;
+
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,8 +18,14 @@ namespace WindowsForms.telas.clientes
         public ClienteCadrastrar()
         {
             InitializeComponent();
+
+            var cliente = new Cliente();
+            cliente.
+            var colaborador = new Colaborador();
+
+
         }
 
-        
+
     }
 }

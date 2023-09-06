@@ -9,8 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="NewFolder1\" />
-    <Folder Include="NewFolder\" />
+    <ProjectReference Include="..\..\Database\Database\Database.csproj" />
   </ItemGroup>
 
 </Project>

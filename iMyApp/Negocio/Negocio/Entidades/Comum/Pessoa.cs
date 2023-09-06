@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Negocio.Comum
+namespace Negocio.Entidades.Comum
 {
-    internal class Pessoa
+    public abstract class Pessoa : EntidadeBasica
     {
+        public string Cpf { get; set; }
+
+        public string Nome { get; set; }
+
     }
 }

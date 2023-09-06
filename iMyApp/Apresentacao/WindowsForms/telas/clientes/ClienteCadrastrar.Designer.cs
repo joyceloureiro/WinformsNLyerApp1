@@ -42,6 +42,7 @@
             lblBolsaEstudos = new Label();
             cmbBolsaEstudos = new ComboBox();
             chkEhResponsavel = new CheckBox();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -163,11 +164,21 @@
             chkEhResponsavel.Text = "Cliente é o responsavel legal ?";
             chkEhResponsavel.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            button1.Location = new Point(146, 324);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 17;
+            button1.Text = "Enter";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // ClienteCadrastrar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(chkEhResponsavel);
             Controls.Add(cmbBolsaEstudos);
             Controls.Add(lblBolsaEstudos);
@@ -205,5 +216,6 @@
         private Label lblBolsaEstudos;
         private ComboBox cmbBolsaEstudos;
         private CheckBox chkEhResponsavel;
+        private Button button1;
     }
 }
