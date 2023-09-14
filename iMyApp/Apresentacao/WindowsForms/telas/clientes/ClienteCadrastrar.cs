@@ -1,4 +1,4 @@
-﻿using Negocio.Comum;
+﻿
 using Negocio.Entidades;
 using System;
 
@@ -20,7 +20,6 @@ namespace WindowsForms.telas.clientes
             InitializeComponent();
 
             var cliente = new Cliente();
-            cliente.
             var colaborador = new Colaborador();
 
 
