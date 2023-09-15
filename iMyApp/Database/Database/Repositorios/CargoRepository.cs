@@ -11,20 +11,20 @@ namespace Database.Repositorios
         {
             try
             {
+
                 var sql = @"INSERT INTO [dbo].[Cargo]
-                           ([Id]
-                           ,[Nome]
-                           ,[Status]
-                           ,[CriadoEm]
-                           ,[CriadoPor]
-                           ,[AlteradoEm]
-                           ,[AlteradoPor])
-                     VALUES
-                           (@nome, 
-                            @status,
-                            @criadoEm,
-                            @criadoPor,
-                            @alteradoEm,
+                            ([Nome]
+                            ,[Status]
+                            ,[CriadoEm]
+                            ,[CriadoPor]
+                            ,[AlteradoEm]
+                            ,[AlteradoPor])
+                        VALUES
+                            (@nome, 
+                            @status, 
+                            @criadoEm, 
+                            @criadoPor, 
+                            @alteradoEm, 
                             @alteradoPor)";
 
                 using (var connection = new SqlConnection(SqlServer.StarConexao()))
@@ -33,18 +33,20 @@ namespace Database.Repositorios
                     var cmd = new SqlCommand(sql, connection);
                     cmd.Parameters.AddWithValue("@nome", cargo.Nome);
                     cmd.Parameters.AddWithValue("@status", cargo.Status);
-                    cmd.Parameters.AddWithValue("@CriadosEm", cargo.CriadoEm);
-                    cmd.Parameters.AddWithValue("@AlteradoEm", cargo.AlteradoEm);
-                    cmd.Parameters.AddWithValue("@AlteradoPor", cargo.AlteradoPor);
+                    cmd.Parameters.AddWithValue("@criadoEm", cargo.CriadoEm);
+                    cmd.Parameters.AddWithValue("@criadoPor", cargo.CriadoPor);
+                    cmd.Parameters.AddWithValue("@alteradoEm", cargo.AlteradoEm);
+                    cmd.Parameters.AddWithValue("@alteradoPor", cargo.AlteradoPor);
                     var resposta = cmd.ExecuteNonQuery();
                     return resposta == 1;
+                    connection.Close();
                 }
             }
 
-            catch (Exception )
+            catch (Exception)
             {
 
-                throw ;
+                throw;
             }
         }
 
@@ -52,7 +54,7 @@ namespace Database.Repositorios
         {
             try
             {
-                var sql = @"";
+                var sql = @"UPDATE Cargos SET Nome = valor WHERE ";
 
                 using (var connection = new SqlConnection(SqlServer.StarConexao()))
                 {
@@ -93,9 +95,9 @@ namespace Database.Repositorios
             }
         }
 
-        public DataTable ObterTodos(int cargoId)
+        public DataTable ObterTodos()
         {
-            var sql = @"";
+            var sql = @"SELECT Id,Nome, Status, AlteradoEm  FROM Cargo";
 
             SqlDataAdapter dataAdapter = null;
             var dataTable = new DataTable();
@@ -121,37 +123,5 @@ namespace Database.Repositorios
         }
 
 
-        /*public int Inserir(Cargo cargo)
-        {
-            var stringConexao = SqlServer.StarConexao();
-            var sqlConnection = new SqlConnection(stringConexao);
-
-            sqlConnection.Open();
-
-            var sql = @"INSERT INTO [dbo].[Cargo]
-                           ([Id]
-                           ,[Nome]
-                           ,[Status]
-                           ,[CriadoEm]
-                           ,[CriadoPor]
-                           ,[AlteradoEm]
-                           ,[AlteradoPor])
-                     VALUES
-                           (@nome, 
-                            @status,
-                            @criadoEm,
-                            @criadoPor,
-                            @alteradoEm,
-                            @alteradoPor)";
-
-            var cmd = new SqlComand();
-            cmd.ComandText = sql;
-            cmd.Para("@nome",);
-
-
-            stringConexao.Clone();
-
-        }
-        */
     }
 }

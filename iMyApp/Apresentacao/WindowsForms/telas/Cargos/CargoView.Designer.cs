@@ -56,7 +56,6 @@
             chkStatus.TabIndex = 40;
             chkStatus.Text = "Cargo Ativo";
             chkStatus.UseVisualStyleBackColor = true;
-            chkStatus.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // groupBoxCargo
             // 
@@ -83,12 +82,14 @@
             // 
             // gvCargos
             // 
+            gvCargos.AllowUserToAddRows = false;
             gvCargos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gvCargos.Location = new Point(18, 162);
             gvCargos.Name = "gvCargos";
             gvCargos.RowTemplate.Height = 25;
             gvCargos.Size = new Size(753, 276);
             gvCargos.TabIndex = 42;
+            gvCargos.CellMouseClick += gvCargos_CellMouseClick_1;
             // 
             // btnNovoCargo
             // 
@@ -118,6 +119,7 @@
             btnRegarregar.TabIndex = 45;
             btnRegarregar.Text = "Regarregar";
             btnRegarregar.UseVisualStyleBackColor = true;
+            btnRegarregar.Click += btnRegarregar_Click;
             // 
             // CargoView
             // 
@@ -131,6 +133,7 @@
             Controls.Add(groupBoxCargo);
             Name = "CargoView";
             Text = "CargoView";
+            Load += CargoView_Load;
             groupBoxCargo.ResumeLayout(false);
             groupBoxCargo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)gvCargos).EndInit();
