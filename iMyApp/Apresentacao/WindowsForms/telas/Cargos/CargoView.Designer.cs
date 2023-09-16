@@ -33,10 +33,10 @@
             groupBoxCargo = new GroupBox();
             txtSalvar = new Button();
             gvCargos = new DataGridView();
+            Delete = new DataGridViewButtonColumn();
             btnNovoCargo = new Button();
             label1 = new Label();
             btnRegarregar = new Button();
-            Delete = new DataGridViewButtonColumn();
             groupBoxCargo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gvCargos).BeginInit();
             SuspendLayout();
@@ -93,6 +93,15 @@
             gvCargos.TabIndex = 42;
             gvCargos.CellMouseClick += gvCargos_CellMouseClick_1;
             // 
+            // Delete
+            // 
+            Delete.FlatStyle = FlatStyle.Flat;
+            Delete.HeaderText = "Ação";
+            Delete.Name = "Delete";
+            Delete.Text = "Excluir";
+            Delete.ToolTipText = "Delete o registro permanentemente";
+            Delete.UseColumnTextForButtonValue = true;
+            // 
             // btnNovoCargo
             // 
             btnNovoCargo.Font = new Font("Segoe UI", 10F, FontStyle.Italic, GraphicsUnit.Point);
@@ -122,15 +131,6 @@
             btnRegarregar.Text = "Regarregar";
             btnRegarregar.UseVisualStyleBackColor = true;
             btnRegarregar.Click += btnRegarregar_Click;
-            // 
-            // Delete
-            // 
-            Delete.FlatStyle = FlatStyle.Flat;
-            Delete.HeaderText = "Ação";
-            Delete.Name = "Delete";
-            Delete.Text = "Excluir";
-            Delete.ToolTipText = "Delete o registro permanentemente";
-            Delete.UseColumnTextForButtonValue = true;
             // 
             // CargoView
             // 

@@ -82,16 +82,21 @@ namespace WindowsForms.telas.Cargos
 
         private void btnRegarregar_Click(object sender, EventArgs e)
         {
+            DataGridViewRow row = gvCargos.Rows[e.RowIndex];
+
+            if (gvCargos.Columns[e.ColumnIndex].Name == "Delete")
+            {
+                var telaId = (int.Parse(row.Cells[1].Value.ToString())); ;
+            };
+
             var nome = txtCargo.Text;
             var status = chkStatus.Checked;
 
             var novoCargo = new Cargo(nome, status);
-            var telaId = ;
-           
             var cargoRepository = new CargoRepository();
-            
 
-            var resultado = cargoRepository.Atualizar(novoCargo,telaId);
+
+            var resultado = cargoRepository.Atualizar(novoCargo, telaId);
 
 
 
