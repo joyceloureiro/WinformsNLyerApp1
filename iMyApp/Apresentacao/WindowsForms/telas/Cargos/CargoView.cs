@@ -1,5 +1,6 @@
 ﻿using Database.Repositorios;
 using Negocio.Entidades;
+using Negocio.Entidades.Comum;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -49,7 +50,7 @@ namespace WindowsForms.telas.Cargos
 
         private void CargoView_Load(object sender, EventArgs e)
         {
-            
+
             var cargoRepository = new CargoRepository();
             var dataTable = cargoRepository.ObterTodos();
             gvCargos.DataSource = dataTable;
@@ -57,10 +58,23 @@ namespace WindowsForms.telas.Cargos
 
         private void gvCargos_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
+            var cargoRepository = new CargoRepository();
+            DataGridViewRow row = gvCargos.Rows[e.RowIndex];
+
+            if (gvCargos.Columns[e.ColumnIndex].Name == "Delete")
+            {
+                if (MessageBox.Show("Deseja realmente deletar o registro?",
+                    "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    var resultado = cargoRepository.Deletar(int.Parse(row.Cells[1].Value.ToString()));
+                };
+                return;
+            }
+
             if (e.RowIndex >= 0)
             {
                 groupBoxCargo.Show();
-                DataGridViewRow row = gvCargos.Rows[e.RowIndex];
+
                 txtCargo.Text = row.Cells[1].Value.ToString();
                 chkStatus.Checked = Convert.ToBoolean(row.Cells[2].Value.ToString());
             }
@@ -72,9 +86,12 @@ namespace WindowsForms.telas.Cargos
             var status = chkStatus.Checked;
 
             var novoCargo = new Cargo(nome, status);
-
+            var telaId = ;
+           
             var cargoRepository = new CargoRepository();
-            var resultado = cargoRepository.Atualizar(novoCargo);
+            
+
+            var resultado = cargoRepository.Atualizar(novoCargo,telaId);
 
 
 

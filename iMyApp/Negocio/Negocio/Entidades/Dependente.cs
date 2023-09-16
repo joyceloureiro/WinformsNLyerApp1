@@ -8,5 +8,9 @@ namespace Negocio.Entidades
 {
     internal class Dependente
     {
+        
     }
+
+
 }
+

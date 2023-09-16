@@ -50,18 +50,25 @@ namespace Database.Repositorios
             }
         }
 
-        public bool Atualizar(Cargo cargo)
+        public bool Atualizar(Cargo cargo, int cargoId)
         {
             try
             {
-                var sql = @"UPDATE Cargos SET Nome = valor WHERE ";
+                var sql = @"Update Cargo set Nome = @nome, Status = @status, AlteradoEm = @alteradoEm WHERE Id = @Id;";
 
                 using (var connection = new SqlConnection(SqlServer.StarConexao()))
                 {
+                    connection.Open();
+
                     var cmd = new SqlCommand(sql, connection);
                     cmd.Parameters.AddWithValue("@nome", cargo.Nome);
+                    cmd.Parameters.AddWithValue("@status", cargo.Status);
+                    cmd.Parameters.AddWithValue("@alteradoEm", cargo.AlteradoEm);
+                    cmd.Parameters.AddWithValue("@Id", cargoId);
                     var resposta = cmd.ExecuteNonQuery();
                     return resposta == 1;
+
+                    connection.Close() ;
                 }
 
 
@@ -77,16 +84,22 @@ namespace Database.Repositorios
         {
             try
             {
-                var sql = @"";
+               
+                var sql = @"DELETE FROM Cargo WHERE Id = @id; ";
 
                 using (var connection = new SqlConnection(SqlServer.StarConexao()))
-                {
+                {                   
+                    connection.Open();
+
                     var cmd = new SqlCommand(sql, connection);
                     cmd.Parameters.AddWithValue("@Id", cargoId);
 
                     var resposta = cmd.ExecuteNonQuery();
                     return resposta == 1;
+
+                    connection.Close() ;
                 }
+                
             }
             catch (Exception)
             {
