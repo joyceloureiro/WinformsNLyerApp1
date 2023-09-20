@@ -59,5 +59,76 @@ namespace WindowsForms.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _19198913_garota_conversando_com_o_conceito_de_ilustracao_de_funcionarios_uma_ilustracao_plana_isolada_no_fundo_branco_vetor {
+            get {
+                object obj = ResourceManager.GetObject("19198913-garota-conversando-com-o-conceito-de-ilustracao-de-funcionarios-uma-ilus" +
+                        "tracao-plana-isolada-no-fundo-branco-vetor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _2831322_menino_trabalhando_no_computador_ilustracao_conceito_gratis_vetor {
+            get {
+                object obj = ResourceManager.GetObject("2831322-menino-trabalhando-no-computador-ilustracao-conceito-gratis-vetor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _3ppk4796jaj4dmtfd {
+            get {
+                object obj = ResourceManager.GetObject("3ppk4796jaj4dmtfd", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap images {
+            get {
+                object obj = ResourceManager.GetObject("images", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Splash {
+            get {
+                object obj = ResourceManager.GetObject("Splash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap splash_screen {
+            get {
+                object obj = ResourceManager.GetObject("splash-screen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap vcredist {
+            get {
+                object obj = ResourceManager.GetObject("vcredist", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

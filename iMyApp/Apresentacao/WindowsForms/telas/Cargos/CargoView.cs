@@ -15,6 +15,7 @@ namespace WindowsForms.telas.Cargos
 {
     public partial class CargoView : Form
     {
+        int id = -1;
         public CargoView()
         {
             InitializeComponent();
@@ -54,6 +55,7 @@ namespace WindowsForms.telas.Cargos
             var cargoRepository = new CargoRepository();
             var dataTable = cargoRepository.ObterTodos();
             gvCargos.DataSource = dataTable;
+            
         }
 
         private void gvCargos_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
@@ -76,18 +78,14 @@ namespace WindowsForms.telas.Cargos
                 groupBoxCargo.Show();
 
                 txtCargo.Text = row.Cells[1].Value.ToString();
+                id = row.Cells[3].Value;
                 chkStatus.Checked = Convert.ToBoolean(row.Cells[2].Value.ToString());
             }
         }
 
         private void btnRegarregar_Click(object sender, EventArgs e)
         {
-            DataGridViewRow row = gvCargos.Rows[e.RowIndex];
-
-            if (gvCargos.Columns[e.ColumnIndex].Name == "Delete")
-            {
-                var telaId = (int.Parse(row.Cells[1].Value.ToString())); ;
-            };
+            
 
             var nome = txtCargo.Text;
             var status = chkStatus.Checked;
@@ -96,7 +94,7 @@ namespace WindowsForms.telas.Cargos
             var cargoRepository = new CargoRepository();
 
 
-            var resultado = cargoRepository.Atualizar(novoCargo, telaId);
+            var resultado = cargoRepository.Atualizar(novoCargo);
 
 
 

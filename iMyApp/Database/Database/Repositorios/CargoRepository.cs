@@ -5,8 +5,26 @@ using System.Data;
 
 namespace Database.Repositorios
 {
+    /// <summary>
+    /// <c>CargoRepository</c> - Executa comandos SQL (CRUD) na tabela de [dbo].[Cargo]
+    /// <exemple>Exemplo:
+    ///     var repositorio = new CargoRepository();
+    /// </exemple>
+    /// </summary>
     public class CargoRepository
     {
+        /// <summary>
+        /// Insere um novo registro na tabela Cargo
+        /// <example>Exemplo:
+        /// <code>
+        ///     var repositorio = new CargoRepository();
+        ///     var cargo = new Cargo("Nome", "Status");
+        ///     var resultado = cargpRepositorio.Incluir(cargo);
+        /// </code>
+        /// </example>
+        /// </summary>
+        /// <param name="cargo">Entidade->Cargo</param>
+        /// <returns>true ou false</returns>
         public bool Inserir(Cargo cargo)
         {
             try
@@ -50,7 +68,7 @@ namespace Database.Repositorios
             }
         }
 
-        public bool Atualizar(Cargo cargo, int cargoId)
+        public bool Atualizar(Cargo cargo)
         {
             try
             {
