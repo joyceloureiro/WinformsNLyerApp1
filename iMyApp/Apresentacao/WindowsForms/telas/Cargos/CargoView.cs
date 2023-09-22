@@ -1,21 +1,12 @@
 ﻿using Database.Repositorios;
 using Negocio.Entidades;
-using Negocio.Entidades.Comum;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using Negocio.Validators;
 
 namespace WindowsForms.telas.Cargos
 {
     public partial class CargoView : Form
     {
-        int id = -1;
+        
         public CargoView()
         {
             InitializeComponent();
@@ -34,6 +25,15 @@ namespace WindowsForms.telas.Cargos
             var status = chkStatus.Checked;
 
             var novoCargo = new Cargo(nome, status);
+
+            var erros = Validacoes.ValidarDataAnotattion(novoCargo);
+
+            foreach (var erro in erros)
+            {
+                MessageBox.Show(erro.ErrorMessage);
+                return;
+            }
+
 
             var cargoRepository = new CargoRepository();
             var resultado = cargoRepository.Inserir(novoCargo);
@@ -55,7 +55,7 @@ namespace WindowsForms.telas.Cargos
             var cargoRepository = new CargoRepository();
             var dataTable = cargoRepository.ObterTodos();
             gvCargos.DataSource = dataTable;
-            
+
         }
 
         private void gvCargos_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
@@ -78,14 +78,15 @@ namespace WindowsForms.telas.Cargos
                 groupBoxCargo.Show();
 
                 txtCargo.Text = row.Cells[1].Value.ToString();
-                id = row.Cells[3].Value;
+                //id = row.Cells[3].Value;
                 chkStatus.Checked = Convert.ToBoolean(row.Cells[2].Value.ToString());
             }
+           // if (gvCargos.Columns[e.ColumnIndex].Name == "Delete")
         }
 
         private void btnRegarregar_Click(object sender, EventArgs e)
         {
-            
+
 
             var nome = txtCargo.Text;
             var status = chkStatus.Checked;

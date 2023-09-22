@@ -82,7 +82,7 @@ namespace Database.Repositorios
                     cmd.Parameters.AddWithValue("@nome", cargo.Nome);
                     cmd.Parameters.AddWithValue("@status", cargo.Status);
                     cmd.Parameters.AddWithValue("@alteradoEm", cargo.AlteradoEm);
-                    cmd.Parameters.AddWithValue("@Id", cargoId);
+                    //cmd.Parameters.AddWithValue("@Id", cargoId);
                     var resposta = cmd.ExecuteNonQuery();
                     return resposta == 1;
 

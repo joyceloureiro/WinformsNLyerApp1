@@ -33,10 +33,11 @@
             groupBoxCargo = new GroupBox();
             txtSalvar = new Button();
             gvCargos = new DataGridView();
-            Delete = new DataGridViewButtonColumn();
             btnNovoCargo = new Button();
             label1 = new Label();
             btnRegarregar = new Button();
+            Delete = new DataGridViewButtonColumn();
+            Atualizar = new DataGridViewTextBoxColumn();
             groupBoxCargo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gvCargos).BeginInit();
             SuspendLayout();
@@ -85,22 +86,13 @@
             // 
             gvCargos.AllowUserToAddRows = false;
             gvCargos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            gvCargos.Columns.AddRange(new DataGridViewColumn[] { Delete });
+            gvCargos.Columns.AddRange(new DataGridViewColumn[] { Delete, Atualizar });
             gvCargos.Location = new Point(18, 162);
             gvCargos.Name = "gvCargos";
             gvCargos.RowTemplate.Height = 25;
             gvCargos.Size = new Size(753, 276);
             gvCargos.TabIndex = 42;
             gvCargos.CellMouseClick += gvCargos_CellMouseClick_1;
-            // 
-            // Delete
-            // 
-            Delete.FlatStyle = FlatStyle.Flat;
-            Delete.HeaderText = "Ação";
-            Delete.Name = "Delete";
-            Delete.Text = "Excluir";
-            Delete.ToolTipText = "Delete o registro permanentemente";
-            Delete.UseColumnTextForButtonValue = true;
             // 
             // btnNovoCargo
             // 
@@ -131,6 +123,22 @@
             btnRegarregar.Text = "Regarregar";
             btnRegarregar.UseVisualStyleBackColor = true;
             btnRegarregar.Click += btnRegarregar_Click;
+            // 
+            // Delete
+            // 
+            Delete.FlatStyle = FlatStyle.Flat;
+            Delete.Frozen = true;
+            Delete.HeaderText = "Ação";
+            Delete.Name = "Delete";
+            Delete.Text = "Excluir";
+            Delete.ToolTipText = "Delete o registro permanentemente";
+            Delete.UseColumnTextForButtonValue = true;
+            // 
+            // Atualizar
+            // 
+            Atualizar.Frozen = true;
+            Atualizar.HeaderText = "Atualizar";
+            Atualizar.Name = "Atualizar";
             // 
             // CargoView
             // 
@@ -165,5 +173,6 @@
         private Label label1;
         private Button btnRegarregar;
         private DataGridViewButtonColumn Delete;
+        private DataGridViewTextBoxColumn Atualizar;
     }
 }
