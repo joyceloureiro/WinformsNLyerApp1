@@ -14,7 +14,7 @@ namespace Database.Conexoes
         /// <returns></returns>
         internal static string StarConexao()
         {
-            return @"Server=.\SQLEXPRESS;Database=iMyApp;User Id=sa;Password=sql2022;Trusted_Connection=False;TrustServerCertificate=True;";
+            return @"Server=.\SQLEXPRESS;Database=Nothwind;User Id=sa;Password=sql2022;Trusted_Connection=False;TrustServerCertificate=True;";
 
         }
        
