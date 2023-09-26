@@ -1,12 +1,14 @@
 ﻿using Database.Repositorios;
 using Negocio.Entidades;
 using Negocio.Validators;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace WindowsForms.telas.Cargos
 {
     public partial class CargoView : Form
     {
-        
+        int id = -1;
+
         public CargoView()
         {
             InitializeComponent();
@@ -18,14 +20,14 @@ namespace WindowsForms.telas.Cargos
             groupBoxCargo.Visible = !groupBoxCargo.Visible;
         }
 
-        private void txtSalvar_Click(object sender, EventArgs e)
+        private void btnSalvar_Click(object sender, EventArgs e)
 
         {
             var nome = txtCargo.Text;
             var status = chkStatus.Checked;
+            Button? button = sender as Button;
 
             var novoCargo = new Cargo(nome, status);
-
             var erros = Validacoes.ValidarDataAnotattion(novoCargo);
 
             foreach (var erro in erros)
@@ -36,6 +38,39 @@ namespace WindowsForms.telas.Cargos
 
 
             var cargoRepository = new CargoRepository();
+
+            switch (button.Text)
+            {
+                case "Cadastrar":
+                    {
+                        var resultado = cargoRepository.Inserir(novoCargo);
+
+                        if (resultado)
+                        {
+                            MessageBox.Show("Cargo Cadastrado com Sucesso.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Erro! Verifique e Tente Novamente.");
+                        }
+                        break;
+                    }
+                case "Atualizar":
+                    {
+                        var resultado = cargoRepository.Atualizar(novoCargo, id);
+                        if (resultado)
+                        {
+                            MessageBox.Show("Cargo Atualizado com Sucesso.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Erro! Verifique e Tente Novamente.");
+                        }
+                        break;
+                    }
+                default:
+                    break;
+            }
             var resultado = cargoRepository.Inserir(novoCargo);
 
             if (resultado)
@@ -63,41 +98,40 @@ namespace WindowsForms.telas.Cargos
             var cargoRepository = new CargoRepository();
             DataGridViewRow row = gvCargos.Rows[e.RowIndex];
 
-            if (gvCargos.Columns[e.ColumnIndex].Name == "Delete")
+            if (gvCargos.Columns[e.ColumnIndex].Name == "Deletar")
             {
                 if (MessageBox.Show("Deseja realmente deletar o registro?",
                     "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    var resultado = cargoRepository.Deletar(int.Parse(row.Cells[1].Value.ToString()));
+                    var resulatdo = cargoRepository.Deletar(Convert.ToInt32(row.Cells[1].Value));
+                    MessageBox.Show("Registro deletado com sucesso!");
                 };
                 return;
             }
 
             if (e.RowIndex >= 0)
             {
+                btnSalvar.Text = "Atualizar";
                 groupBoxCargo.Show();
-
-                txtCargo.Text = row.Cells[1].Value.ToString();
-                //id = row.Cells[3].Value;
-                chkStatus.Checked = Convert.ToBoolean(row.Cells[2].Value.ToString());
+                id = Convert.ToInt32(row.Cells[1].Value);
+                txtCargo.Text = row.Cells[2].Value.ToString();
+                chkStatus.Checked = Convert.ToBoolean(row.Cells[3].Value.ToString());
             }
-           // if (gvCargos.Columns[e.ColumnIndex].Name == "Delete")
+            // if (gvCargos.Columns[e.ColumnIndex].Name == "Delete")
         }
+        private void TabelaCargo()
+        {
+            var cargoRepository = new CargoRepository();
+
+            var obterTodos = cargoRepository.ObterTodos();
+
+            gvCargos.DataSource = obterTodos;
+        }
+
 
         private void btnRegarregar_Click(object sender, EventArgs e)
         {
-
-
-            var nome = txtCargo.Text;
-            var status = chkStatus.Checked;
-
-            var novoCargo = new Cargo(nome, status);
-            var cargoRepository = new CargoRepository();
-
-
-            var resultado = cargoRepository.Atualizar(novoCargo);
-
-
+            TabelaCargo();
 
         }
     }

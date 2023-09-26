@@ -31,13 +31,13 @@
             txtCargo = new TextBox();
             chkStatus = new CheckBox();
             groupBoxCargo = new GroupBox();
-            txtSalvar = new Button();
+            btnSalvar = new Button();
             gvCargos = new DataGridView();
+            Delete = new DataGridViewButtonColumn();
+            Atualizar = new DataGridViewTextBoxColumn();
             btnNovoCargo = new Button();
             label1 = new Label();
             btnRegarregar = new Button();
-            Delete = new DataGridViewButtonColumn();
-            Atualizar = new DataGridViewTextBoxColumn();
             groupBoxCargo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gvCargos).BeginInit();
             SuspendLayout();
@@ -61,7 +61,7 @@
             // 
             // groupBoxCargo
             // 
-            groupBoxCargo.Controls.Add(txtSalvar);
+            groupBoxCargo.Controls.Add(btnSalvar);
             groupBoxCargo.Controls.Add(txtCargo);
             groupBoxCargo.Controls.Add(chkStatus);
             groupBoxCargo.Location = new Point(12, 40);
@@ -72,15 +72,15 @@
             groupBoxCargo.Text = "Novo cargo";
             groupBoxCargo.Visible = false;
             // 
-            // txtSalvar
+            // btnSalvar
             // 
-            txtSalvar.Location = new Point(695, 31);
-            txtSalvar.Name = "txtSalvar";
-            txtSalvar.Size = new Size(75, 23);
-            txtSalvar.TabIndex = 41;
-            txtSalvar.Text = "Salvar";
-            txtSalvar.UseVisualStyleBackColor = true;
-            txtSalvar.Click += txtSalvar_Click;
+            btnSalvar.Location = new Point(695, 31);
+            btnSalvar.Name = "btnSalvar";
+            btnSalvar.Size = new Size(75, 23);
+            btnSalvar.TabIndex = 41;
+            btnSalvar.Text = "Salvar";
+            btnSalvar.UseVisualStyleBackColor = true;
+            btnSalvar.Click += btnSalvar_Click;
             // 
             // gvCargos
             // 
@@ -93,6 +93,22 @@
             gvCargos.Size = new Size(753, 276);
             gvCargos.TabIndex = 42;
             gvCargos.CellMouseClick += gvCargos_CellMouseClick_1;
+            // 
+            // Delete
+            // 
+            Delete.FlatStyle = FlatStyle.Flat;
+            Delete.Frozen = true;
+            Delete.HeaderText = "Ação";
+            Delete.Name = "Delete";
+            Delete.Text = "Excluir";
+            Delete.ToolTipText = "Delete o registro permanentemente";
+            Delete.UseColumnTextForButtonValue = true;
+            // 
+            // Atualizar
+            // 
+            Atualizar.Frozen = true;
+            Atualizar.HeaderText = "Atualizar";
+            Atualizar.Name = "Atualizar";
             // 
             // btnNovoCargo
             // 
@@ -124,22 +140,6 @@
             btnRegarregar.UseVisualStyleBackColor = true;
             btnRegarregar.Click += btnRegarregar_Click;
             // 
-            // Delete
-            // 
-            Delete.FlatStyle = FlatStyle.Flat;
-            Delete.Frozen = true;
-            Delete.HeaderText = "Ação";
-            Delete.Name = "Delete";
-            Delete.Text = "Excluir";
-            Delete.ToolTipText = "Delete o registro permanentemente";
-            Delete.UseColumnTextForButtonValue = true;
-            // 
-            // Atualizar
-            // 
-            Atualizar.Frozen = true;
-            Atualizar.HeaderText = "Atualizar";
-            Atualizar.Name = "Atualizar";
-            // 
             // CargoView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -167,7 +167,7 @@
         private TextBox txtCargo;
         private CheckBox chkStatus;
         private GroupBox groupBoxCargo;
-        private Button txtSalvar;
+        private Button btnSalvar;
         private DataGridView gvCargos;
         private Button btnNovoCargo;
         private Label label1;

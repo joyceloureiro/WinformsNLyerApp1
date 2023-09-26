@@ -68,7 +68,7 @@ namespace Database.Repositorios
             }
         }
 
-        public bool Atualizar(Cargo cargo)
+        public bool Atualizar(Cargo cargo,int id)
         {
             try
             {
@@ -82,7 +82,8 @@ namespace Database.Repositorios
                     cmd.Parameters.AddWithValue("@nome", cargo.Nome);
                     cmd.Parameters.AddWithValue("@status", cargo.Status);
                     cmd.Parameters.AddWithValue("@alteradoEm", cargo.AlteradoEm);
-                    //cmd.Parameters.AddWithValue("@Id", cargoId);
+                    cmd.Parameters.AddWithValue("@id", id);
+
                     var resposta = cmd.ExecuteNonQuery();
                     return resposta == 1;
 
